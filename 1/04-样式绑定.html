@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- class样式处理：<div v-bind:class="{active: isActive}"></div>
+
+       数组语法：<div v-bind:class="{activeClass , errorClass}"></div> -->
+<style>
+    .active {
+        border: 1px solid red;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .error {
+        background-color: green;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div @:class="{active: isActive,error:isError}">
+            <div @:class='[activeClass,errorClass]'></div>
+            <button v-on:click=''></button>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="vue.js"></script>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                isError: true,
+                activeClass: 'active',
+                errorClass: 'error'
+            },
+            methods: {
+                handle: function() {
+                    this.isActive = !this.isActive;
+                    this.isError = !this.isError;
+                }
+            }
+        });
+    </script>
+
+
+
+</body>
+
+</html>
